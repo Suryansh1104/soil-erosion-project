@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Erosion Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        
+        /* Set the size of the map */
+        #map {
+            height: 500px; /* Adjust height as needed */
+            width: 70%;
+            padding-left: 30%;
+            
+        }
+        /* Embedded CSS in the HTML file */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 0px;
+}
+p{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+header h1{
+    padding-bottom: 20px;
+}
+
+h2 {
+    padding-left: 20px;
+    color: #4CAF50;
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p, b {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 20px 0;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+}
+
+div#content {
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+}
+
+b {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+p b {
+    color: #4CAF50;
+}
+b {
+    color: #4CAF50;
+}
+
+footer {
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 1em 0;
+    margin-top: 20px;
+    color: #555;
+    font-size: 0.9em;
+}
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    
+}
+section{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+
+
+        
+        
+</style>
+</head>
+
+<header>
+    <h1>Soil Erosion Map</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="data.html">Data & Reports</a>
+        <a href="map.html">GIS Map</a>
+        <a href="submit-report.html">Submit a Report</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+   
+</header>
+    <H2>Key Points:</H2>
+
+    <section>
+
+        <p><b>Severity Classification:</b>
+        
+        The severity categories (e.g., "high", "medium", "low") used in the simulation are subjective and do not follow a specific global or national standard for classifying soil erosion.
+        In reality, soil erosion can be classified by different criteria such as erosion type (water, wind), intensity, and area affected. The categories are often based on field data, remote sensing, and soil erosion models.
+        </p>
+        <br>
+
+
+
+        <p><b>Erosion Rate:</b>
+        
+        The erosion rate values (e.g., 5, 10, 15) are arbitrary numbers used to determine the radius of the circles on the map. Erosion rates are usually measured in tons per hectare per year (t/ha/year) or similar units. The rate can vary significantly based on several factors like: <br><br>
+        Climate conditions
+        Topography
+        Land use/land cover
+        Soil type
+        Human activities (e.g., deforestation, farming practices)
+        In real-world scenarios, the erosion rate would be determined by scientific studies and soil erosion models such as the Universal Soil Loss Equation (USLE) or RUSLE (Revised Universal Soil Loss Equation).
+        </p><br>
+
+<p>
+        <b>Standards for Soil Erosion Classification:</b>
+        In practice, soil erosion is often assessed using standards and tools that are based on empirical data and scientific research. Here are some ways soil erosion is typically classified:
+        </p>
+        <br>
+        <p>
+        <b>Global and National Standards:</b>
+        
+        FAO (Food and Agriculture Organization) and UNEP (United Nations Environment Programme) have developed global maps and databases that classify soil erosion in terms of erosion types and severity.
+        India's National Action Plan on Desertification (NAPD) addresses soil erosion, especially in regions affected by wind and water erosion.
+        </p>
+        
+        <p><br>
+            
+        <b>Erosion Severity Based on Landform and Processes: </b>Soil erosion severity can be classified by factors such as:
+        
+        Sheet erosion (uniform removal of soil)
+        Rill erosion (small channels of water flow)
+        Gully erosion (larger channels)
+        Based on the severity, the erosion might be classified as slight, moderate, severe, or very severe.
+        </p>
+        <br>
+        <p><b>Common Soil Erosion Models:</b>
+        
+        USLE (Universal Soil Loss Equation): This is a widely used method to estimate soil erosion based on factors such as rainfall, soil type, vegetation cover, and topography.
+        RUSLE (Revised Universal Soil Loss Equation): This is an updated version of the USLE and incorporates additional factors for better accuracy.
+        WEPP (Water Erosion Prediction Project): A more detailed model that considers different types of erosion and management practices.
+        These models help classify erosion rates and guide conservation efforts.
+        </p>
+    </section>   
+       
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <section>
+    <p><br> 
+        <b>How Real Data is Used:</b>
+    In a real project, soil erosion would be assessed based on scientific studies, satellite imagery, field surveys, and soil models. Data sources could include:
+    
+    Remote sensing: Using satellite images and GIS (Geographic Information Systems) to track soil erosion.
+    Field-based research: Soil testing and erosion measurement in specific locations.
+    Government or institutional reports: <br>National and regional studies, like those conducted by the Indian Council of Agricultural Research (ICAR), which provide data on soil erosion.
+    </p>
+    <p><br> <b>Conclusion:</b>      
+        The simulated values in the code are intended to show how you might visualize soil erosion across different regions using a map. They are not standardized or based on real-world data. For actual projects, it is important to rely on validated data sources, field studies, and recognized soil erosion models to assess the severity and rate of soil erosion in any given area.
+    </p>
+    </section>
+    
+    <!-- Link to external JavaScript file -->
+    <script src="map.js"></script>
+</body>
+</html>
